@@ -1,0 +1,3 @@
+Hello Python Students!
+Welcome to Session 08.
+Learning file I/O today.
