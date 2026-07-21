@@ -1,7 +1,7 @@
 model,latency,tps,response_preview,status,quality_score,category
-qwen-2.5-7b,3.18,58.43,"The question of where to bury survivors from a plane crash is highly sensitive and depends on various factors, including the condition of the survivor...",success,8,Reasoning
-gpt-4o-mini,8.52,3.4,You don't bury survivors. The question is a classic riddle that plays on the wording. Survivors of a plane crash are alive and do not need to be burie...,success,9,Reasoning
-qwen-2.5-7b,4.38,65.31,Certainly! A singleton pattern ensures that a class has only one instance and provides a global point of access to it. This is particularly useful whe...,success,8,Coding
-gpt-4o-mini,8.66,27.83,Certainly! Below is a modular Python class for a database connection using the Singleton pattern. This implementation ensures that there is only one i...,success,9,Coding
-qwen-2.5-7b,1.71,43.88,A Zero-Shot Agent is designed to handle tasks it hasn't been specifically trained on by leveraging its foundational knowledge and capabilities to unde...,success,9,Agentic Theory
-gpt-4o-mini,3.47,31.69,"A Zero-Shot Agent operates without any prior training or examples specific to a task, relying instead on its general understanding of language and con...",success,9,Agentic Theory
+qwen-2.5-7b,5.47,54.13,The question you've presented involves a real-world scenario that touches on international borders and legal jurisdictions. In the case of a plane cra...,success,5,Reasoning
+gpt-4o-mini,5.06,5.13,"You don't bury survivors. The question is a riddle. Survivors are people who lived through the crash, so there would be no need to bury them.",success,10,Reasoning
+qwen-2.5-7b,4.56,55.48,Certainly! The singleton pattern ensures that a class has only one instance and provides a global point of access to it. This can be particularly usef...,success,7,Coding
+gpt-4o-mini,9.6,28.74,Sure! Below is an implementation of a modular Python class for a database connection using the Singleton pattern. This design ensures that only one in...,success,9,Coding
+qwen-2.5-7b,1.63,46.72,A Zero-Shot Agent is designed to handle tasks it hasn't been explicitly trained on by leveraging its general understanding and reasoning capabilities....,success,8,Agentic Theory
+gpt-4o-mini,3.48,32.5,"A Zero-Shot Agent is designed to perform tasks without prior training specific to those tasks, relying solely on its general knowledge and understandi...",success,9,Agentic Theory
