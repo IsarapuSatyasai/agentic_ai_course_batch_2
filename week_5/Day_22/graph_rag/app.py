@@ -20,7 +20,7 @@ with st.sidebar:
 with open("sample_document.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
 
-tab1, tab2, tab3, tab4 = st.tabs(["Document", "Build Graph", "Vector vs Graph"])
+tab1, tab2, tab3 = st.tabs(["Document", "Build Graph", "Vector vs Graph"])
 
 with tab1:
     st.subheader("Sample Document")
