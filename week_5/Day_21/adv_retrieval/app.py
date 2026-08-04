@@ -10,7 +10,7 @@ from langchain_classic.retrievers import EnsembleRetriever
 load_dotenv()
 
 st.set_page_config(page_title="Session 3 Demo", layout="centered")
-st.title("🚀 Advanced Retrieval Techniques")
+st.title("Advanced Retrieval Techniques")
 st.markdown("**Hybrid Search • Metadata Filter • Reranking**")
 
 # Sidebar
@@ -23,7 +23,7 @@ with st.sidebar:
 # Load document
 raw_text = load_sample_text()
 
-tab1, tab2, tab3 = st.tabs(["📄 Document", "💾 Store Data", "🔍 Advanced Retrieval"])
+tab1, tab2, tab3 = st.tabs(["Document", "Store Data", "Advanced Retrieval"])
 
 with tab1:
     st.subheader("Sample Document")
@@ -39,7 +39,7 @@ with tab2:
             
             st.session_state.vectorstore = vectorstore
             st.session_state.chunks = enriched_chunks
-            st.success(f"✅ {len(enriched_chunks)} chunks stored successfully!")
+            st.success(f"{len(enriched_chunks)} chunks stored successfully!")
 
 with tab3:
     st.subheader("Advanced Retrieval Demo")
