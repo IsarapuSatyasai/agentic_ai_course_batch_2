@@ -6,5 +6,10 @@ load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-COLLECTION_NAME = "rag_eval_demo"
-PERSIST_DIRECTORY = "./chroma_db"
+# Default Models
+GENERATION_MODEL = "gpt-4o-mini"
+JUDGE_MODEL = "gpt-4o-mini"
+
+# Default Parameters
+TEMPERATURE = 0.1
+MAX_TOKENS = 300
