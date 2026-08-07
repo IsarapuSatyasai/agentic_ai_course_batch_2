@@ -49,34 +49,38 @@ Answer:"""
 
 
 # ====================== JUDGE LLM (RAG TRIAD) ======================
-def judge_faithfulness(question: str, answer: str, context: str, model: str = JUDGE_MODEL) -> float:
+def judge_faithfulness(question: str,
+                       answer: str,
+                       context: str,
+                       model: str = JUDGE_MODEL) -> float:
+    
     """Score how faithful the answer is to the context (0 to 1)"""
     
     prompt = f"""You are an expert evaluator. Score the faithfulness of the answer based on the context.
-
-Faithfulness means: Does the answer only contain information that can be found in the context? (No hallucinations)
-
-Question: {question}
-Context: {context}
-Answer: {answer}
-
-Return ONLY a number between 0 and 1.
-- 1.0 = Fully faithful
-- 0.0 = Completely hallucinated
-
-Score:"""
+    
+    Faithfulness means: Does the answer only contain information that can be found in the context? (No hallucinations)
+    
+    Question: {question}
+    Context: {context}
+    Answer: {answer}
+    
+    Return ONLY a number between 0 and 1.
+    - 1.0 = Fully faithful
+    - 0.0 = Completely hallucinated
+    
+    Score:"""
 
     response = client.chat.completions.create(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.0,
-        max_tokens=10
+             model=model,
+             messages=[{'role': 'user', 'content': prompt}],
+             temperature=0.0,
+             max_tokens = 10
     )
     try:
         return float(response.choices[0].message.content.strip())
     except:
         return 0.5
-
+         
 
 def judge_answer_relevancy(question: str, answer: str, model: str = JUDGE_MODEL) -> float:
     """Score how relevant the answer is to the question (0 to 1)"""
