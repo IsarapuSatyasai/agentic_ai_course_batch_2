@@ -17,7 +17,7 @@ load_dotenv()
 
 # ===================== CONFIG =====================
 st.set_page_config(page_title="Anatomy of AI Agent", layout="wide", page_icon="🧠")
-st.title("🧠 Anatomy of AI Agent")
+st.title("Anatomy of AI Agent")
 st.markdown("**Educational Single Agent with RAG | LangChain + OpenAI + Streamlit**")
 
 # Sidebar - Anatomy Framework
@@ -42,7 +42,7 @@ def get_vectorstore():
     
     if not data_path.exists():
         os.makedirs(data_path, exist_ok=True)
-        st.warning("📁 Put your teaching documents (PDFs/Text) in the 'data' folder.")
+        st.warning("Put your teaching documents (PDFs/Text) in the 'data' folder.")
     
     embeddings = OpenAIEmbeddings()
     
@@ -69,25 +69,24 @@ vectorstore = get_vectorstore()
 retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
 
 # ===================== TOOLS =====================
-
 def calculator(expr: str) -> str:
     try:
         return str(numexpr.evaluate(expr))
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"Error : {str(e)}"
 
 tools = [
     Tool(name="Web Search", func=DuckDuckGoSearchRun().run,
-         description="Search latest information on the internet."),
-    Tool(name="Calculator", func=calculator,
-         description="Perform mathematical calculations."),
-    Tool(name="Python REPL", 
+         description=
+         "Search latest information on the internet. "),
+    Tool(name="Calculator", 
          func=PythonREPL().run,
          description="Execute Python code for complex logic or data processing."),
-    Tool(name="Course Knowledge Base (RAG)", 
+    Tool(name="Course Knowledge Base (RAG)",
          func=lambda q: "\n".join([doc.page_content for doc in retriever.invoke(q)]),
-         description="Retrieve information from course materials and Agentic AI documents.")
+         description="Retrieve information from course materials and Agentic AI Documents.")
 ]
+
 
 # ===================== LLM & PROMPT ENGINEERING =====================
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.6)
@@ -117,10 +116,14 @@ Question: {input}
 """)
 
 # Memory
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
 
 # Create Agent
-agent = create_react_agent(llm=llm, tools=tools, prompt=prompt_template)
+agent = create_react_agent(
+    llm=llm,
+    tools=tools,
+    prompt=prompt_template
+)
 agent_executor = AgentExecutor(
     agent=agent,
     tools=tools,
@@ -128,8 +131,9 @@ agent_executor = AgentExecutor(
     verbose=True,
     handle_parsing_errors=True,
     max_iterations=8,
-    return_intermediate_steps = True
+    return_intermediate_steps=True
 )
+
 
 # ===================== CHAT UI =====================
 if "messages" not in st.session_state:
@@ -151,7 +155,7 @@ if user_input := st.chat_input("Ask the agent anything (try course-related quest
             st.markdown(answer)
 
             # Show thinking trace
-            with st.expander("🔍 See Full Thinking Trace (Agent Anatomy)"):
+            with st.expander("See Full Thinking Trace (Agent Anatomy)"):
                 intermediate_steps = response.get("intermediate_steps", [])
                 if intermediate_steps:
                     for step in intermediate_steps:
